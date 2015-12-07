@@ -1,5 +1,5 @@
 var columns, theNum, playerNum, cPlayCol;
-columns = 4;
+columns = 3;
 theNum = [];
 playerNum = [];
 cPlayCol = 0; // cPlayCol is the current player col
@@ -43,22 +43,25 @@ var assessNum = function () {
 
     for (var i = 0; i < columns; i++) {
         if (playerNum[i] < theNum[i]) {
-            s = "higher"
+            $( "#col"+i ).css( "background-color" , "#8888FF" );
+            //s = "higher";
         } else if (playerNum[i] > theNum[i]) {
-            s = "lower"
+            $( "#col"+i ).css( "background-color" , "#FF8888" );
+            //s = "lower";
         } else if (playerNum[i] == theNum[i]) {
-            s = "got it"
+            $( "#col"+i ).css( "background-color" , "#88FF88" );
+            //s = "got it";
         }
-        $( '#winStatus'+i ).empty().append( '<p>'+s+'</p>' );
+        //$( '#winStatus'+i ).empty().append( '<p>'+s+'</p>' );
     }
 }
 
 var currentColDraw = function () {
     for (var i = 0; i < columns; i++) {
         if (i == cPlayCol) {
-            $( '#col'+i ).css("background-color", "#FF8800" );
+            $( '#col'+i ).css("border-style", "solid" );
         }else {
-            $( '#col'+i ).css("background-color", "#FFFFF0" );
+            $( '#col'+i ).css("border-style", "none" );
         }
 
     }
