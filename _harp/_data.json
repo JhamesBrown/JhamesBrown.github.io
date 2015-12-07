@@ -1,0 +1,29 @@
+{
+    "index": {
+        "pageTitle": "Home"
+    },
+    "about": {
+
+        "pageTitle": "le about page"
+    },
+    "sketch01": {
+        "pageTitle": "sketch01",
+        "dateCreated": "151203",
+        "stylesheets": [
+
+        ],
+        "javascripts": [
+            "/js/sketch01.js"
+        ]
+    },
+    "stepFigure": {
+        "pageTitle": "figureStep",
+        "dateCreated": "151205",
+        "stylesheets": [
+            "/css/stepFigure.css"
+        ],
+        "javascripts": [
+            "/js/stepFigure.js"
+        ]
+    }
+}
