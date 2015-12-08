@@ -4,10 +4,13 @@
         <meta charset="utf-8">
         <title><%- pageTitle %> | <%- siteTitle %></title>
         <link rel="stylesheet" href="css/theme.css" >
+        <script src="https://use.typekit.net/akd7gdo.js"></script>
+        <script>try{Typekit.load({ async: true });}catch(e){}</script>
         <%- partial("partial/_stylesheets.ejs") %>
     </head>
     <body>
         <%- partial("partial/_header") %>
+        <%- partial("partial/_nav") %>
         <%- yield %>
         <%- partial("partial/_footer") %>
 

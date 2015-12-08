@@ -1,17 +1,56 @@
 @orange : #FF8800;
 @ghost : #F8F8FF;
 @ivory : #FFFFF0;
+@midGrey : #888888;
+@lightGrey : #CCCCCC;
+@lightestGrey : #F9F9F9;
 
+.futuraBold {
+    font-family: "futura-pt",sans-serif;
+    font-style: normal;
+    font-weight: 700;
+}
 
 html, body {
     font-family: sans-serif;
-    background-color: @ghost;
+    background-color: @lightestGrey;
+}
+
+.header {
+    margin: 10px;
+}
+
+H1 {
+    .futuraBold
 }
 
 .centerFrame {
-    width: 600px;
+    width: 70%;
     padding: 10px;
     margin: auto;
-    margin-top: 10px;
     background-color: @ivory;
+    display: inline-block;
+    float: left;
+}
+
+.nav {
+    width: 20%;
+    font-size: 0.8em;
+    font-family: sans-serif;
+    display: inline-block;
+    padding-right: 5px;
+    float: left;
+    ul {
+        list-style: none;
+    }
+    a {
+        text-decoration: none;
+        color: @midGrey;
+    }
+    a:hover {
+        color:@orange;
+    }
+    a:visited {
+        color: @lightGrey;
+    }
 }
