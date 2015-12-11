@@ -1,20 +1,24 @@
-var columns, theNum, playerNum, cPlayCol;
+var columns, theNum, playerNum, cPlayCol, timer;
 columns = 3;
 theNum = [];
 playerNum = [];
 cPlayCol = 0; // cPlayCol is the current player col
+timer = 30; // time left to complete the current level
+
+$( "#scene" ).append( '<div id="timer">'+timer+'</div>');
+$( "#scene" ).append( '<div class="flexColContainer"></div>');
 
 for (var i = 0; i < columns; i++) {
     theNum[i] = Math.floor((Math.random()*10));
     playerNum[i] = 0;
 
-    $( "#scene" ).append( '<div id="col'+i+'" class="gameCol"></div>');
+    $( ".flexColContainer" ).append( '<div id="col'+i+'" class="gameCol"></div>');
     $( '#col'+i ).append( '<div id="playerNum'+ i +'""></div>' ).append( '<div id="winStatus'+ i +'"></div>');
     $( '#playerNum'+i ).append( "<p>"+ playerNum[i] +"</p>" );
 }
 
-//$( "#scene" ).append( '<div id="playerNum"></div>' );
-//$( "#scene" ).append( '<div id="winStatus"></div>');
+var myTimer = window.setInterval(timerDown,1000);
+
 
 $( document ).ready( function () {
     $( window ).keydown( function(e) {
@@ -63,6 +67,12 @@ var currentColDraw = function () {
         }else {
             $( '#col'+i ).css("border-style", "none" );
         }
+    }
+}
 
+function timerDown() {
+    if (timer > 0) {
+        timer--;
+        document.getElementById("timer").innerHTML = ""+timer;
     }
 }

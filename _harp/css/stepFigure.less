@@ -1,14 +1,29 @@
+@import "/theme.less";
+@testingColor : #FF55FF;
+
 .gameCol {
-    display: inline-block;
+    display: inline-flex;
+    justify-content: center;
     width: 40px;
     padding: 5px;
     margin: 10px;
+    background-color: @testingColor;
+    .futuraBold;
+}
+
+#timer {
+    width:100%;
+    font-size: 1.2em;
     text-align: center;
+    margin-bottom: 50px;
+    .futuraBold;
 }
 
 #scene {
-    width: 50%;
+    width: 300px;
     height: 500px;
-    margin: 0 auto;
-
+}
+.flexColContainer {
+    display: flex;
+    justify-content: center
 }
