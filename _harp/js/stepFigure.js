@@ -12,7 +12,7 @@ for (var i = 0; i < columns; i++) {
     theNum[i] = Math.floor((Math.random()*10));
     playerNum[i] = 0;
 
-    $( ".flexColContainer" ).append( '<div id="col'+i+'" class="gameCol"></div>');
+    $( ".flexColContainer" ).append( '<div id="col'+i+'" class="gameCol" animation="none"></div>');
     $( '#col'+i ).append( '<div id="playerNum'+ i +'""></div>' ).append( '<div id="winStatus'+ i +'"></div>');
     $( '#playerNum'+i ).append( "<p>"+ playerNum[i] +"</p>" );
 }
@@ -43,20 +43,17 @@ $( document ).ready( function () {
 });
 
 var assessNum = function () {
-    var s;
-
     for (var i = 0; i < columns; i++) {
         if (playerNum[i] < theNum[i]) {
-            $( "#col"+i ).css( "background-color" , "#8888FF" );
-            //s = "higher";
+            $( "#col"+i ).attr( "animation" , "higher" );
+            //$( "#col"+i ).replaceWith( $( "#col"+i ).clone(true));
         } else if (playerNum[i] > theNum[i]) {
-            $( "#col"+i ).css( "background-color" , "#FF8888" );
-            //s = "lower";
+            $( "#col"+i ).attr( "animation" , "lower" );
         } else if (playerNum[i] == theNum[i]) {
+            $( "#col"+i ).attr( "animation" , "none" );
             $( "#col"+i ).css( "background-color" , "#88FF88" );
-            //s = "got it";
         }
-        //$( '#winStatus'+i ).empty().append( '<p>'+s+'</p>' );
+        $( "#col"+i ).replaceWith( $( "#col"+i ).clone(true));
     }
 }
 

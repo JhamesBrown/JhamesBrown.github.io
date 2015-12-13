@@ -1,5 +1,36 @@
 @import "/theme.less";
 @testingColor : #FF55FF;
+@red : #FF2222;
+@blue : #2222FF;
+
+.mixi-frames-higher {
+    from {
+        background-color: @blue;
+    }
+    to {
+        background-color: #FFFFFF;
+    }
+}
+.mixi-frames-lower {
+    from {
+        background-color: @red;
+    }
+    to {
+        background-color: #FFFFFF;
+    }
+}
+
+@-webkit-keyframes higherAni {.mixi-frames-higher;}
+@-moz-keyframes higherAni {.mixi-frames-higher;}
+@-ms-keyframes higherAni {.mixi-frames-higher;}
+@-o-keyframes higherAni {.mixi-frames-higher;}
+@keyframes higherAni {.mixi-frames-higher;}
+
+@-webkit-keyframes lowerAni {.mixi-frames-lower;}
+@-moz-keyframes lowerAni {.mixi-frames-lower;}
+@-ms-keyframes lowerAni {.mixi-frames-lower;}
+@-o-keyframes lowerAni {.mixi-frames-lower;}
+@keyframes lowerAni {.mixi-frames-lower;}
 
 .gameCol {
     display: inline-flex;
@@ -7,8 +38,15 @@
     width: 40px;
     padding: 5px;
     margin: 10px;
-    background-color: @testingColor;
     .futuraBold;
+}
+[animation = "higher"] {
+    //background-color: @blue;
+    animation: higherAni 1s;
+}
+[animation = "lower"] {
+    //background-color: @red;
+    animation: lowerAni 1s;
 }
 
 #timer {
