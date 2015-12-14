@@ -1,24 +1,16 @@
-var columns, theNum, playerNum, cPlayCol, timer;
+var columns, theNum, playerNum, cPlayCol, timer, isTiming, isSceneWon, myTimer, score, level;
 columns = 3;
 theNum = [];
 playerNum = [];
 cPlayCol = 0; // cPlayCol is the current player col
-timer = 30; // time left to complete the current level
+timer = 0; // time left to complete the current level
+isSceneWon = false;
+isTiming = false;
+score = 0;
+level = 0;
 
-$( "#scene" ).append( '<div id="timer">'+timer+'</div>');
-$( "#scene" ).append( '<div class="flexColContainer"></div>');
-
-for (var i = 0; i < columns; i++) {
-    theNum[i] = Math.floor((Math.random()*10));
-    playerNum[i] = 0;
-
-    $( ".flexColContainer" ).append( '<div id="col'+i+'" class="gameCol" animation="none"></div>');
-    $( '#col'+i ).append( '<div id="playerNum'+ i +'""></div>' ).append( '<div id="winStatus'+ i +'"></div>');
-    $( '#playerNum'+i ).append( "<p>"+ playerNum[i] +"</p>" );
-}
-
-var myTimer = window.setInterval(timerDown,1000);
-
+Start();
+myTimer = window.setInterval(timerDown,1000);
 
 $( document ).ready( function () {
     $( window ).keydown( function(e) {
@@ -34,7 +26,7 @@ $( document ).ready( function () {
         }
 
         if (e.keyCode == 32){ //spacebar
-            assessNum();
+            isSceneWon ? Start() : assessNum();
         }
         currentColDraw();
         $( '#playerNum'+cPlayCol+' > p' ).replaceWith( "<p>"+ playerNum[cPlayCol] +"</p>" );
@@ -43,17 +35,24 @@ $( document ).ready( function () {
 });
 
 var assessNum = function () {
+    var winCols = 0;
     for (var i = 0; i < columns; i++) {
         if (playerNum[i] < theNum[i]) {
             $( "#col"+i ).attr( "animation" , "higher" );
-            //$( "#col"+i ).replaceWith( $( "#col"+i ).clone(true));
         } else if (playerNum[i] > theNum[i]) {
             $( "#col"+i ).attr( "animation" , "lower" );
         } else if (playerNum[i] == theNum[i]) {
             $( "#col"+i ).attr( "animation" , "none" );
             $( "#col"+i ).css( "background-color" , "#88FF88" );
+            winCols++;
         }
         $( "#col"+i ).replaceWith( $( "#col"+i ).clone(true));
+        if (winCols == columns) {
+            onWin();
+        }
+    }
+    if (isTiming) {
+        timer -= 3;
     }
 }
 
@@ -67,9 +66,42 @@ var currentColDraw = function () {
     }
 }
 
+function Start () { //sets up the game scene
+    isSceneWon = false;
+    level++;
+    columns = level;
+    timer += 30;
+    isTiming = true;
+    updateScore();
+    $( '#scene' ).html('');
+    $( "#scene" ).append( '<div id="timer">'+timer+'</div>');
+    $( "#scene" ).append( '<div class="flexColContainer"></div>');
+
+    for (var i = 0; i < columns; i++) {
+        theNum[i] = Math.floor((Math.random()*10));
+        playerNum[i] = 0;
+
+        $( ".flexColContainer" ).append( '<div id="col'+i+'" class="gameCol" animation="none"></div>');
+        $( '#col'+i ).append( '<div id="playerNum'+ i +'""></div>' ).append( '<div id="winStatus'+ i +'"></div>');
+        $( '#playerNum'+i ).append( "<p>"+ playerNum[i] +"</p>" );
+    }
+}
+
 function timerDown() {
-    if (timer > 0) {
+    if (timer > 0 && isTiming) {
         timer--;
         document.getElementById("timer").innerHTML = ""+timer;
     }
+}
+
+function onWin() {
+    isSceneWon = true;
+    score += timer;
+    $( '#scene' ).append('<div id="winStatus"> GOT IT! </div>');
+    isTiming = false;
+    updateScore();
+}
+
+function updateScore() {
+    $( '#scoreDisplay' ).html('<p>SCORE&nbsp:&nbsp'+score+'</br>LEVEL&nbsp:&nbsp'+level+'</p>');
 }
