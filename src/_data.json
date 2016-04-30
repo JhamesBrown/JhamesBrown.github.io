@@ -25,5 +25,12 @@
         "javascripts": [
             "/js/stepFigure.js"
         ]
+    },
+    "cards": {
+        "pageTitle": "Cards",
+        "dateCreated": "160418",
+        "stylesheets": [
+            "/css/cards.css"
+        ]
     }
 }

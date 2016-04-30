@@ -18,27 +18,30 @@ html, body {
 
 .header {
     margin: 10px;
+    height: 50px;
 }
 
-H1 {
+h1 {
     .futuraBold
 }
 .centerFrame {
 
     height: 100%;
+    width: 500px;
     padding: 10px;
-    margin-left: 50px;
+    margin: auto;
+    margin-top: 80px;
     background-color: @ivory;
-    display: inline-block;
-    float: left;
+    //display: inline-block;
 }
 
 .nav {
-    width: 200px;
+    position: absolute;
+    width: 150px;
     font-size: 0.8em;
     font-family: sans-serif;
     display: inline-block;
-    padding-right: 5px;
+    padding-left: 9px;
     float: left;
     ul {
         list-style: none;
@@ -48,10 +51,24 @@ H1 {
         color: @midGrey;
     }
     a:hover {
-        color:@orange;
+        color:@lightGrey;
         text-decoration: underline;
     }
     a:visited {
-        color: @lightGrey;
+        color: @ivory;
     }
+    .nav-wrapper {
+        height: 10px;
+        background-color: @orange;
+        overflow: hidden;
+        :hover {
+            height: 100px;
+
+        }
+    }
+}
+
+#sketch01Canvas {
+    margin: auto;
+    display:block;
 }

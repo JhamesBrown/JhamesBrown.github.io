@@ -1,0 +1,18 @@
+doctype
+html
+    head   
+        meta(charset="utf-8")
+        title #{ pageTitle }
+        link(rel="stylesheet" href="/css/theme.css")
+        script(src="https://use.typekit.net/akd7gdo.js")
+        script try{Typekit.load({ async: true });}catch(e){}
+        include ./partial/_stylesheets.jade
+        
+    body
+        include ./partial/_header.jade
+        include ./partial/_nav.jade
+        .centerFrame
+            != yield
+        script(src='//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
+        script(src="js/project.js" type="text/javascript")
+        include ./partial/_javascripts.jade
