@@ -1,6 +1,1 @@
-window.addEventListener("DOMContentLoaded",function(){
-    var e,t;e=document.getElementById("sketch01Canvas");
-    t=e.getContext("2d");
-    t.fillStyle="#0F5000";
-    return t.fillRect(0,0,50,50);
-});
+window.addEventListener("DOMContentLoaded",function(){var t,e,l,i,n;t=document.getElementById("sketch01Canvas");e=t.getContext("2d");e.fillStyle="#050500";console.log(t.width,t.height);n=[];for(l=i=0;i<=10;l=i+=1){e.fillStyle="#"+(10-l)+""+l+"0";e.fillRect(t.width/2-5*l-10,9*l,20+l*10,20+l*10);e.fillStyle="#00"+l+"000";n.push(e.fillRect(0+l*10,0+l*10,t.width-l*20,t.height-l*20))}return n});

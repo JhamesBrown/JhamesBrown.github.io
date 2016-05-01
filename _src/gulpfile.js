@@ -6,7 +6,8 @@ var babel = require('gulp-babel');
 var cp = require('child_process');
 
 gulp.task('serve', function () {
-    harp.server(__dirname + '/src', {
+    console.log(__dirname);
+    harp.server(__dirname , {
         port: 9000
     }, function () {
         browserSync({
@@ -14,19 +15,21 @@ gulp.task('serve', function () {
             open: false,
             notify: {
                 styles: ['opacity: 0', 'position: absolute']
-            }
+                }
         });
         //watch for scss changes
-        gulp.watch(["src/**/*.scss", "src/**/*.less"], function () {
+        gulp.watch(["./**/*.scss", "./**/*.less"], function () {
             reload("*.css", {stream:true});
         });
 
-        gulp.watch(["src/**/*.jade", "src/**/*.ejs","src/**/*.json", "src/**/*.html"], function () {
+        gulp.watch(["./**/*.jade", "./**/*.json", "./**/*.html"], function () {
             reload();
         });
 
-        gulp.watch(["src/**/*.js", "src/**/*.coffee"], function () {
+        gulp.watch(["./**/*.js", "./**/*.coffee"], function () {
             reload();
         });
+        console.log("server endZ");
     });
+    console.log("task enszzz");
 });
